@@ -1,0 +1,16 @@
+#/usr/bin/expect
+
+set timeout 2
+spawn ssh landscape@cnat1.com
+expect "*password*"
+send "*********\r"
+
+set timeout 15
+expect "*\$"
+send "starcluster get landscape1 /opt/sge6/log2/*log ./\r"
+
+set timeout 15
+expect "*\$"
+exit
+
+

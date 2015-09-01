@@ -1,0 +1,15 @@
+#!/usr/bin/expect
+
+
+set timeout 15
+spawn scp -P 4000 landscape@cnat1.com:~/* ./
+expect "*password*"
+send "******\r"
+
+set timeout 15
+expect "*\$"
+
+exit
+
+
+
