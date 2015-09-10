@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+# coding=utf-8
+
+import commands
+import sys
+
+argc        =  len(sys.argv)
+query_rows  =  0
+
+if argc < 2:
+    query_rows  = 1000
+    print "row number of query is not setted, use default:1000"
+else:
+    rows_list   = range(1000, 51000, 1000)
+    index       = eval(sys.argv[1]) - 1
+    query_rows  = rows_list[index]
+    print "query_rows is %d" %query_rows
+
+
+
+cmd           = " curl \"192.168.3.110:1971/request/solr?job_id=cusparse&q=car&rows=%d\" " %query_rows
+print  cmd
+status,result = commands.getstatusoutput(cmd)
+print result
+
+
+

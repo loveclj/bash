@@ -1,0 +1,2 @@
+$@
+gprof $1 | gprof2dot |xdot
